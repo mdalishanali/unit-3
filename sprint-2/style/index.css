@@ -38,7 +38,7 @@ body{
     }
     .itemDiv{
         /* height: 250px; */
-        border: 1px solid black;
+        /* border: 1px solid black; */
         margin-left: 45px;
         border-radius: 5px;
         padding: 10px;
@@ -68,7 +68,7 @@ body{
     }
     .itemDiv{
         /* height: 250px; */
-        border: 1px solid black;
+        /* border: 1px solid black; */
         margin-left: 45px;
         border-radius: 5px;
         padding: 10px;
