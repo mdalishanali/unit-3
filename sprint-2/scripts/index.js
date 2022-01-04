@@ -6,7 +6,7 @@ let arr=JSON.parse(localStorage.getItem("cart")) ||[];
     async function getData(){
     try{
     // let url ="https://www.themealdb.com/api/json/v1/1/random.php";
-     let url = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian";
+     let url = "https://www.themealdb.com/api/json/v1/1/filter.php?a=American";
         let res =await fetch(url);
         let data = await res.json();
         let total = data.meals;
