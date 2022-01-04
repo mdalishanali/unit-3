@@ -1,76 +1,51 @@
 var itemContainer = document.querySelector(".item-container");
 
-    async function getData(){
-    try{
-    // let url ="https://www.themealdb.com/api/json/v1/1/random.php";
-     let url = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian";
-        let res =await fetch(url);
-        let data = await res.json();
-        displayDish(data);
-        console.log(data);
-    }
-    catch(err){
-        console.log("Error:",err);
-    }
-  
 
-}
-getData();
 
-    // var products = json.parse(localStorage.setItem("cartItems"))||[];
+    let data  = JSON.parse(localStorage.getItem("cart"));
+        console.log(data)
 
-function displayDish(food){
-   for(var i=0; i<3; i++){
+    data.map(function(dish){
+
+        var itemDiv = document.createElement("div");
+        itemDiv.setAttribute("class","itemDiv");
     
-    var itemDiv = document.createElement("div");
-    itemDiv.setAttribute("class","itemDiv");
-
-var itemPoster = document.createElement("img");
-var itemName = document.createElement("h2");
-
-var price = document.createElement("h3");
-price.textContent = `Price ${Math.floor( Math.random()*100+100)}`;
-price.setAttribute("class","price");
-
-var cart  = document.createElement("h2");
-cart.style.color="red";
-
-cart.setAttribute("class","cart");
-
-cart.addEventListener("click", function(event){
-       showCart(event);
-   });
-
-itemPoster.src=food.meals[i].strMealThumb;
-itemName.innerText=food.meals[i].strMeal;
-itemDiv.append(itemPoster,itemName,price,cart);
-itemContainer.append(itemDiv);
-
-   }
-var tprice = document.createElement("h1");
-tprice.textContent="Total Price: 1025";
-var box = document.querySelector(".tprice");
-box.append(tprice);
-var out = document.querySelector("#out");
-out.addEventListener("click", pay);
-
-function pay(){
-    window.location.href="checkout.html"
-}
-
-
- 
- 
-
-}
-var count =1;
-var cartCount = document.querySelector("#cartCount");
-function showCart(event){
+    var itemPoster = document.createElement("img");
+    var itemName = document.createElement("h2");
     
-   console.log(count++);
-
-   cartCount.textContent=`Cart${count++}`;
-   cartCount.style.color="red";
-
+    var price = document.createElement("h2");
+    var price1 = Math.floor( Math.random()*100+100);
+    price.textContent = `Price-- ${price1}`;
+    price.setAttribute("class","price");
+    
+    var cart  = document.createElement("h2");
+    cart.textContent="Click Here to Order"
+    cart.style.color="white";
+    cart.style.background="black"
+    cart.setAttribute("class","cart");
+    
+    cart.addEventListener("click", function(event){
+           orderNow(event);
+       });
+    
+    itemPoster.src=dish.img;
+    itemName.innerText=dish.name;
+    itemDiv.append(itemPoster,itemName,price,cart);
+    itemContainer.append(itemDiv);
+        })
+       function orderNow(event){
+           window.location.href="checkout.html"
+       }
    
-}
+
+// var small = document.createElement("p");
+// small.textContent=sumTotal;
+// small.append(itemContainer);
+
+
+ 
+ 
+
+
+var cartCount = document.querySelector("#cartCount");
+cartCount.textContent=`Count${count}`;
